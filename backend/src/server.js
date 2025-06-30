@@ -3,11 +3,14 @@ import { db } from "./config/db.js";
 import { favoritesTable } from "./db/schema.js";
 import { and, eq } from "drizzle-orm";
 import cors from 'cors';
+import job from "./config/cron.js";
 
 import "dotenv/config";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+if (process.env.NODE_ENV === "production") job.start();
 
 app.use(cors());
 app.use(express.json());
