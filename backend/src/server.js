@@ -16,7 +16,8 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK' });
+  res.status(200).json({ status: 'OK' });
+  console.log("Health check endpoint hit");
 });
 
 app.post("/api/favorites", async (req, res) => {
